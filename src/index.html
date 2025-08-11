@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
-</head>
-<body>
-    
-</body>
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-item" id="logo">Dashboard</div>
+        <div class="search-bar">
+          <input
+            type="search"
+            name="search"
+            id="search"
+            class="nav-item"
+            placeholder="Search your tasks here"
+          />
+          <button><span><img id="search-icon" src="./assets/search-icon.svg" alt=""></span></button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div id="sidebar" class="item">Sidebar</div>
+        <div id="content" class="item">Content</div>
+      </div>
+    </main>
+  </body>
 </html>
