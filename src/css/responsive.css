@@ -1,0 +1,25 @@
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 100vh;
+  }
+  .sidebar-title {
+    display: none;
+  }
+  #content {
+    grid-area: 1 / 1 / -1 / -1;
+  }
+  #search {
+    width: 200px;
+  }
+}
+@media (min-width: 768px){
+    .navCloseBtn{
+        display: none;
+    }
+}
+@media screen and (max-height: 450px) {
+  .sideNav {
+    padding-top: 15px;
+  }
+}

@@ -8,8 +8,13 @@
   </head>
   <body>
     <header>
+      <!-- Top nav / header -->
       <nav>
-        <div class="nav-item" id="logo">Dashboard</div>
+          <!--.hamburger Will be only visible in small screens-->
+        <div class="hamburger">☰</div>
+        <div class="nav-item sidebar-title">
+          <span>Dash</span><span>board</span>
+        </div>
         <div class="search-bar">
           <input
             type="search"
@@ -18,15 +23,81 @@
             class="nav-item"
             placeholder="Search your tasks here"
           />
-          <button><span><img id="search-icon" src="./assets/search-icon.svg" alt=""></span></button>
+          <button class="search-button">
+            <span
+              ><img id="search-icon" src="./assets/icons/search-icon.svg" alt=""
+            /></span>
+          </button>
         </div>
       </nav>
     </header>
+
     <main>
       <div class="container">
-        <div id="sidebar" class="item">Sidebar</div>
-        <div id="content" class="item">Content</div>
+        <!-- Sidebar -->
+        <div class="sidebar item sideNav">
+            <!-- .navCloseBtn Will be only visible on small screens when Sidebar is open-->
+          <div class="navCloseBtn">&times;</div>
+          <div class="profile">
+            <img src="./assets/images/pfp.jpg" id="pfp" alt="" />
+          </div>
+          <div>Hello</div>
+        </div>
+        <!-- Content -->
+        <div id="content" class="item">
+          <button id="addTask">Add Task</button>
+        </div>
       </div>
+      <!-- Dialog Box to add new task -->
+      <dialog id="myDialog">
+        <form action="" id="taskForm">
+          <div>
+            <label for="title">
+              Title: <input type="text" id="title" name="title" />
+            </label>
+          </div>
+          <div>
+            <label for="date">
+              Due Date: <input type="date" id="date" name="date" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Priority: Extreme
+              <input
+                type="radio"
+                id="extreme"
+                name="priority"
+                value="Extreme"
+              />
+            </label>
+
+            <label>
+              Moderate
+              <input
+                type="radio"
+                id="moderate"
+                name="priority"
+                value="Moderate"
+              />
+            </label>
+
+            <label>
+              Low
+              <input type="radio" id="low" name="priority" value="Low" />
+            </label>
+          </div>
+
+          <div>
+            <label> Description: <textarea id="description"> </textarea></label>
+          </div>
+
+          <button id="done">Done</button>
+        </form>
+
+        <button id="closeDialog">Close</button>
+      </dialog>
     </main>
+    <script></script>
   </body>
 </html>
