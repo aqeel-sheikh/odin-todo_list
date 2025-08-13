@@ -10,7 +10,7 @@
     <header>
       <!-- Top nav / header -->
       <nav>
-          <!--.hamburger Will be only visible in small screens-->
+        <!--.hamburger Will be only visible in small screens-->
         <div class="hamburger">☰</div>
         <div class="nav-item sidebar-title">
           <span>Dash</span><span>board</span>
@@ -25,7 +25,10 @@
           />
           <button class="search-button">
             <span
-              ><img id="search-icon" src="./assets/icons/search-icon.svg" alt=""
+              ><img
+                id="search-icon"
+                src="./assets/icons/search-icon.svg"
+                alt=""
             /></span>
           </button>
         </div>
@@ -36,7 +39,7 @@
       <div class="container">
         <!-- Sidebar -->
         <div class="sidebar item sideNav">
-            <!-- .navCloseBtn Will be only visible on small screens when Sidebar is open-->
+          <!-- .navCloseBtn Will be only visible on small screens when Sidebar is open-->
           <div class="navCloseBtn">&times;</div>
           <div class="profile">
             <img src="./assets/images/pfp.jpg" id="pfp" alt="" />
@@ -45,7 +48,12 @@
         </div>
         <!-- Content -->
         <div id="content" class="item">
-          <button id="addTask">Add Task</button>
+          <div class="tasks content-box">
+            <button id="addTask"><span>+</span> <span> Add Task</span></button>
+            
+          </div>
+          <div class="taskk-status content-box"></div>
+          <div class="completed-tasks content-box"></div>
         </div>
       </div>
       <!-- Dialog Box to add new task -->
