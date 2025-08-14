@@ -41,9 +41,10 @@ export function addTask() {
     const description = document.querySelector("#description").value;
 
     const t = new task(title, date, priority, status, description);
+    
     showTask(t);
+    
     tasksList.push(t);
-    showCompletedTask(t);
     localStorage.setItem("myData", JSON.stringify(tasksList));
 
     myDialog.close();
@@ -92,7 +93,7 @@ export function showTask(t) {
   editBtn.textContent = "Edit";
   editBtn.classList.add("edit-btn");
   const dltBtn = document.createElement("a");
-  dltBtn.addEventListener("click", ()=> deleteTask(task, t))
+  dltBtn.addEventListener("click", () => deleteTask(task, t));
   dltBtn.textContent = "Delete";
   dltBtn.classList.add("dlt-btn");
 
@@ -138,19 +139,6 @@ export function showTask(t) {
   taskDateCreated.style.color = "#708090";
   taskDateCreated.textContent = `Date Created: ${t.dateCreated}`;
 
-  if (t.status === "Not Started") {
-    priorityImg.src = redCircle;
-    sSpan.style.color = "#ff0000";
-    // task.style.backgroundColor = "rgba(255, 0, 0, 0.1)";
-  } else if (t.status === "In Progress") {
-    priorityImg.src = blueCircle;
-    sSpan.style.color = "#0000ff";
-    // task.style.backgroundColor = "rgba(0, 0, 255, 0.1)";
-  } else if (t.status === "Completed") {
-    priorityImg.src = greenCircle;
-    sSpan.style.color = "#00b900ff";
-    task.style.backgroundColor = "rgba(0, 255, 0, 0.1)";
-  }
   if (t.priority === "Extreme") {
     pSpan.style.color = "#800080";
   } else if (t.priority === "Moderate") {
@@ -159,71 +147,27 @@ export function showTask(t) {
     pSpan.style.color = "#dbc60aff";
   }
 
-  taskDetails.append(priorityImg, taskTitle, taskDescription);
-  aboutTask.append(taskPriority, taskStatus, taskDueDate, taskDateCreated);
-
-  task.append(menuContainer, taskDetails, aboutTask);
-
-  document.querySelector(".tasks").appendChild(task);
-
-  dotsBtn.addEventListener("click", () => handleDotsBtnClick(menu, dotsBtn));
-}
-export function showCompletedTask(t) {
-  const task = document.createElement("div");
-  task.classList.add("task");
-
-  const menuContainer = document.createElement("div");
-  menuContainer.classList.add("menu-container");
-
-  const dotsBtn = document.createElement("img");
-  dotsBtn.src = dotsImg;
-  dotsBtn.classList.add("dots");
-
-  const menu = document.createElement("div");
-  menu.classList.add("menu", "hide");
-
-  const editBtn = document.createElement("a");
-  editBtn.textContent = "Edit";
-  editBtn.classList.add("edit-btn");
-  const dltBtn = document.createElement("a");
-  dltBtn.classList.add("dlt-btn");
-  dltBtn.addEventListener("click", ()=> deleteTask(task, t))
-  dltBtn.textContent = "Delete";
-
-  menu.append(editBtn, dltBtn);
-  menuContainer.append(dotsBtn, menu);
-
-  const taskDetails = document.createElement("div");
-  taskDetails.classList.add("task-details");
-  const priorityImg = document.createElement("img");
-  priorityImg.classList.add("circle");
-
-  const taskTitle = document.createElement("h4");
-  taskTitle.textContent = t.title;
-
-  const taskDescription = document.createElement("p");
-  taskDescription.textContent = t.description;
-
-  const aboutTask = document.createElement("div");
-  aboutTask.classList.add("about-task");
-
-  const taskStatus = document.createElement("p");
-  const sSpan = document.createElement("span");
-  sSpan.classList.add("status");
-  sSpan.textContent = t.status;
-  taskStatus.textContent = "Status: ";
-  taskStatus.appendChild(sSpan);
-
-  priorityImg.src = greenCircle;
-  sSpan.style.color = "#00b900ff";
-
-  taskDetails.append(priorityImg, taskTitle, taskDescription);
-  aboutTask.append(taskStatus);
-
-  task.append(menuContainer, taskDetails, aboutTask);
-
   if (t.status === "Completed") {
+    priorityImg.src = greenCircle;
+    sSpan.style.color = "#00b900ff";
+
+    taskDetails.append(priorityImg, taskTitle, taskDescription);
+    aboutTask.append(taskPriority, taskStatus, taskDueDate, taskDateCreated);
+    task.append(menuContainer, taskDetails, aboutTask);
     document.querySelector(".completed-tasks").appendChild(task);
+  } else {
+    if (t.status === "Not Started") {
+      priorityImg.src = redCircle;
+      sSpan.style.color = "#ff0000";
+    } else if (t.status === "In Progress") {
+      priorityImg.src = blueCircle;
+      sSpan.style.color = "#0000ff";
+    }
+
+    taskDetails.append(priorityImg, taskTitle, taskDescription);
+    aboutTask.append(taskPriority, taskStatus, taskDueDate, taskDateCreated);
+    task.append(menuContainer, taskDetails, aboutTask);
+    document.querySelector(".tasks").appendChild(task);
   }
   dotsBtn.addEventListener("click", () => handleDotsBtnClick(menu, dotsBtn));
 }

@@ -28,6 +28,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedData = JSON.parse(localStorage.getItem("myData")) || [];
   for (let task of savedData) {
     showTask(task);
-    showCompletedTask(task)
   }
 });
