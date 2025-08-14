@@ -1,27 +1,20 @@
+import {format, compareAsc} from "date-fns"
+
 import dotsImg from "../assets/icons/three-dots.svg";
 import redCircle from "../assets/icons/red-circle.svg";
 import greenCircle from "../assets/icons/green-circle.svg";
 import blueCircle from "../assets/icons/blue-circle.svg";
-import orangeCircle from "../assets/icons/orange-circle.svg";
 
 export class task {
   constructor(title, dueDate, priority, status, description) {
     (this.title = title),
-      (this.dueDate = dueDate),
+      (this.dueDate = format(new Date(dueDate), "EEE, MMM d, yyyy")),
       (this.priority = priority),
       (this.status = status),
       (this.description = description),
       (this.id = crypto.randomUUID()),
-      (this.dateCreated = generateDate());
+      (this.dateCreated = format(new Date(), "EEE, MMM d, yyyy"));
   }
-}
-function generateDate() {
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, "0");
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const year = today.getFullYear();
-
-  return `${day}-${month}-${year}`;
 }
 
 const myDialog = document.getElementById("myDialog");
@@ -153,7 +146,7 @@ export function showTask(t) {
   } else if (t.status === "Completed") {
     priorityImg.src = greenCircle;
     sSpan.style.color = "#00b900ff";
-    // task.style.backgroundColor = "rgba(0, 255, 0, 0.1)";
+    task.style.backgroundColor = "rgba(0, 255, 0, 0.1)";
   }
   if (t.priority === "Extreme") {
     pSpan.style.color = "#800080";
