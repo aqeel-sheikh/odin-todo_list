@@ -1,5 +1,5 @@
 import { format, compareAsc } from "date-fns";
-import { deleteTask } from "./taskManager";
+import { deleteTask, editTask } from "./taskManager";
 import dotsImg from "../assets/icons/three-dots.svg";
 import redCircle from "../assets/icons/red-circle.svg";
 import greenCircle from "../assets/icons/green-circle.svg";
@@ -17,39 +17,42 @@ export class task {
   }
 }
 
-const myDialog = document.getElementById("myDialog");
-const form = document.querySelector("#taskForm");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
+export const myDialog = document.getElementById("myDialog");
 
 export const tasksList = JSON.parse(localStorage.getItem("myData")) || [];
 
 export function addTask() {
-  document.querySelector("#done").addEventListener("click", () => {
-    const titleELement = document.querySelector("#title");
-    const title = titleELement.value;
+  document.querySelector("#done").addEventListener("click", handleAddTask);
+}
 
-    const date = document.querySelector("#date").value;
+const form = document.querySelector("#taskForm");
 
-    const priority = document.querySelector(
-      'input[name="priority"]:checked'
-    ).value;
-
-    const status = document.querySelector("input[name='status']:checked").value;
-
-    const description = document.querySelector("#description").value;
-
-    const t = new task(title, date, priority, status, description);
-    
-    showTask(t);
-    
-    tasksList.push(t);
-    localStorage.setItem("myData", JSON.stringify(tasksList));
-
-    myDialog.close();
-    form.reset();
+export function handleAddTask() {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
   });
+  const titleELement = document.querySelector("#title");
+  const title = titleELement.value;
+
+  const date = document.querySelector("#date").value;
+
+  const priority = document.querySelector(
+    'input[name="priority"]:checked'
+  ).value;
+
+  const status = document.querySelector("input[name='status']:checked").value;
+
+  const description = document.querySelector("#description").value;
+
+  const t = new task(title, date, priority, status, description);
+
+  showTask(t);
+
+  tasksList.push(t);
+  localStorage.setItem("myData", JSON.stringify(tasksList));
+
+  myDialog.close();
+  form.reset();
 }
 
 export function showAddTaskForm() {
@@ -92,6 +95,10 @@ export function showTask(t) {
   const editBtn = document.createElement("a");
   editBtn.textContent = "Edit";
   editBtn.classList.add("edit-btn");
+  editBtn.addEventListener("click", () => {
+    editTask(t);
+  });
+
   const dltBtn = document.createElement("a");
   dltBtn.addEventListener("click", () => deleteTask(task, t));
   dltBtn.textContent = "Delete";

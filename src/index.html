@@ -51,7 +51,9 @@
           <div class="tasks content-box">
             <div class="tasks-heading">
               <div class="tasks-heading-left tasks-title">
-                <img src="./assets/icons/todo-pending.svg" alt="" /><span>To-Do</span>
+                <img src="./assets/icons/todo-pending.svg" alt="" /><span
+                  >To-Do</span
+                >
               </div>
               <button class="tasks-heading-right" id="addTask">
                 <span>+</span> <span> Add Task</span>
@@ -60,13 +62,17 @@
           </div>
           <div class="tasks-status content-box">
             <div class="tasks-status-heading tasks-title">
-                <img src="./assets/icons/todo-status.svg" alt="" /><span>Tasks Status</span>
-              </div>
+              <img src="./assets/icons/todo-status.svg" alt="" /><span
+                >Tasks Status</span
+              >
+            </div>
           </div>
           <div class="completed-tasks content-box">
             <div class="comp-tasks-heading tasks-title">
-                <img src="./assets/icons/todo-completed.svg" alt="" /><span>Completed Tasks</span>
-              </div>
+              <img src="./assets/icons/todo-completed.svg" alt="" /><span
+                >Completed Tasks</span
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -75,12 +81,12 @@
         <form action="" id="taskForm">
           <div>
             <label for="title">
-              Title: <input type="text" id="title" name="title" />
+              Title: <input type="text" id="title" name="title" required />
             </label>
           </div>
           <div>
             <label for="date">
-              Due Date: <input type="date" id="date" name="date" />
+              Due Date: <input type="date" id="date" name="date" required/>
             </label>
           </div>
           <div>
@@ -91,16 +97,17 @@
                 id="extreme"
                 name="priority"
                 value="Extreme"
-              />
-            </label>
-
-            <label>
-              Moderate
-              <input
+                />
+              </label>
+              
+              <label>
+                Moderate
+                <input
                 type="radio"
                 id="moderate"
                 name="priority"
                 value="Moderate"
+                checked
               />
             </label>
 
@@ -118,11 +125,12 @@
                 id="not-started"
                 name="status"
                 value="Not Started"
+                checked
               />
             </label>
 
-            <label>
-              In Progress
+            <label
+              >In Progress
               <input
                 type="radio"
                 id="in-progress"
