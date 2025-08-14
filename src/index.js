@@ -6,7 +6,7 @@ import {
   showAddTaskForm,
   addTask,
   showTask,
-  tasksList,
+  showCompletedTasks
 } from "./components/tasks.js";
 import {
   hideSidebarOnSmallScreens,
@@ -33,10 +33,7 @@ document
 document.addEventListener("DOMContentLoaded", () => {
   const savedData = JSON.parse(localStorage.getItem("myData")) || [];
   for (let task of savedData) {
-    showTask(task.title, task.date, task.priority, task.description);
+    showTask(task);
   }
+  showCompletedTasks(savedData)
 });
-
-function showCompletedTasks (arr) {
-    const completedTasksContainer = document.querySelector(".completed-tasks")
-}

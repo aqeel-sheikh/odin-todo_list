@@ -1,16 +1,18 @@
 import dotsImg from "../assets/icons/three-dots.svg";
 import redCircle from "../assets/icons/red-circle.svg";
-import blueCircle from "../assets/icons/blue-circle.svg";
 import greenCircle from "../assets/icons/green-circle.svg";
+import blueCircle from "../assets/icons/blue-circle.svg";
+import orangeCircle from "../assets/icons/orange-circle.svg";
 
 export class task {
-  constructor(title, dueDate, priority, description) {
+  constructor(title, dueDate, priority, status, description) {
     (this.title = title),
       (this.dueDate = dueDate),
       (this.priority = priority),
+      (this.status = status),
       (this.description = description),
-      (this.dateCreated = generateDate()),
-      (this.id = crypto.randomUUID());
+      (this.id = crypto.randomUUID()),
+      (this.dateCreated = generateDate());
   }
 }
 function generateDate() {
@@ -34,22 +36,22 @@ export function addTask() {
   document.querySelector("#done").addEventListener("click", () => {
     const titleELement = document.querySelector("#title");
     const title = titleELement.value;
-    
+
     const date = document.querySelector("#date").value;
-    
+
     const priority = document.querySelector(
       'input[name="priority"]:checked'
     ).value;
-    
-    const description = document.querySelector("#description").value;
-    
-    const t = new task(title, date, priority, description);
-    showTask(title, date, priority, description);
 
+    const status = document.querySelector("input[name='status']:checked").value;
+
+    const description = document.querySelector("#description").value;
+
+    const t = new task(title, date, priority, status, description);
+    showTask(t);
     tasksList.push(t);
+    showCompletedTasks(tasksList);
     localStorage.setItem("myData", JSON.stringify(tasksList));
-    
-    // const savedData = JSON.parse(localStorage.getItem("myData")) || [];
 
     myDialog.close();
     form.reset();
@@ -79,7 +81,7 @@ export function showAddTaskForm() {
   });
 }
 
-export function showTask(title, dueDate, priority, description) {
+export function showTask(t) {
   const task = document.createElement("div");
   task.classList.add("task");
 
@@ -107,10 +109,10 @@ export function showTask(title, dueDate, priority, description) {
   priorityImg.classList.add("circle");
 
   const taskTitle = document.createElement("h4");
-  taskTitle.textContent = title;
+  taskTitle.textContent = t.title;
 
   const taskDescription = document.createElement("p");
-  taskDescription.textContent = description;
+  taskDescription.textContent = t.description;
 
   const aboutTask = document.createElement("div");
   aboutTask.classList.add("about-task");
@@ -118,33 +120,51 @@ export function showTask(title, dueDate, priority, description) {
   const taskPriority = document.createElement("p");
   const pSpan = document.createElement("span");
   pSpan.classList.add("priority");
-  pSpan.textContent = priority;
+  pSpan.textContent = t.priority;
   taskPriority.textContent = "Priority: ";
   taskPriority.appendChild(pSpan);
+
+  const taskStatus = document.createElement("p");
+  const sSpan = document.createElement("span");
+  sSpan.classList.add("status");
+  sSpan.textContent = t.status;
+  taskStatus.textContent = "Status: ";
+  taskStatus.appendChild(sSpan);
 
   const taskDueDate = document.createElement("p");
   const dSpan = document.createElement("span");
   dSpan.classList.add("date");
-  dSpan.textContent = dueDate;
+  dSpan.textContent = t.dueDate;
   taskDueDate.textContent = "Due Date: ";
   taskDueDate.appendChild(dSpan);
 
-  if (priority === "Extreme") {
+  const taskDateCreated = document.createElement("p");
+  taskDateCreated.style.color = "#708090";
+  taskDateCreated.textContent = `Date Created: ${t.dateCreated}`;
+
+  if (t.status === "Not Started") {
     priorityImg.src = redCircle;
-    task.style.backgroundColor = "#e645450e";
-    pSpan.style.color = "#ff0000";
-  } else if (priority === "Moderate") {
+    sSpan.style.color = "#ff0000";
+    // task.style.backgroundColor = "rgba(255, 0, 0, 0.1)";
+  } else if (t.status === "In Progress") {
     priorityImg.src = blueCircle;
-    task.style.backgroundColor = "#1d32ce0e";
-    pSpan.style.color = "#0000ff";
-  } else {
+    sSpan.style.color = "#0000ff";
+    // task.style.backgroundColor = "rgba(0, 0, 255, 0.1)";
+  } else if (t.status === "Completed") {
     priorityImg.src = greenCircle;
-    task.style.backgroundColor = "#00ff001c";
-    pSpan.style.color = "#00ff00";
+    sSpan.style.color = "#00b900ff";
+    // task.style.backgroundColor = "rgba(0, 255, 0, 0.1)";
+  }
+  if (t.priority === "Extreme") {
+    pSpan.style.color = "#800080";
+  } else if (t.priority === "Moderate") {
+    pSpan.style.color = "#0ec2daff";
+  } else {
+    pSpan.style.color = "#dbc60aff";
   }
 
   taskDetails.append(priorityImg, taskTitle, taskDescription);
-  aboutTask.append(taskPriority, taskDueDate);
+  aboutTask.append(taskPriority, taskStatus, taskDueDate, taskDateCreated);
 
   task.append(menuContainer, taskDetails, aboutTask);
 
@@ -158,28 +178,21 @@ export function showTask(title, dueDate, priority, description) {
       dotsBtn.style.position = "";
     }
   });
+  return task;
 }
 
-{
-  /* <div class="task">
-  <div class="task-details">
-    <img class="circle" src="./assets/icons/blue-circle.svg" alt="" />
-
-    <h4>Task 1</h4>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, itaque.
-    </p>
-  </div>
-  <div class="about-task">
-    <p>
-      Priority: <span class="priority">Moderate</span>
-    </p>
-    <p>
-      Status: <span class="status">In progress</span>
-    </p>
-    <p>
-      Due date: <span class="date">01-01-2025</span>
-    </p>
-  </div>
-</div>; */
+export function showCompletedTasks(arr) {
+  const completedTasksContainer = document.querySelector(".completed-tasks");
+  for (let compTask of arr) {
+    if (compTask.status === "Completed") {
+      const existingTaskEl = document.querySelector(
+        `[data-id="${compTask.id}"]`
+      );
+      if (!existingTaskEl) {
+        const taskEl = showTask(compTask);
+        taskEl.dataset.id = compTask.id;
+        completedTasksContainer.appendChild(taskEl);
+      }
+    }
+  }
 }

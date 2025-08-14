@@ -49,11 +49,25 @@
         <!-- Content -->
         <div id="content" class="item">
           <div class="tasks content-box">
-            <button id="addTask"><span>+</span> <span> Add Task</span></button>
-            
+            <div class="tasks-heading">
+              <div class="tasks-heading-left tasks-title">
+                <img src="./assets/icons/todo-pending.svg" alt="" /><span>To-Do</span>
+              </div>
+              <button class="tasks-heading-right" id="addTask">
+                <span>+</span> <span> Add Task</span>
+              </button>
+            </div>
           </div>
-          <div class="taskk-status content-box"></div>
-          <div class="completed-tasks content-box"></div>
+          <div class="tasks-status content-box">
+            <div class="tasks-status-heading tasks-title">
+                <img src="./assets/icons/todo-status.svg" alt="" /><span>Tasks Status</span>
+              </div>
+          </div>
+          <div class="completed-tasks content-box">
+            <div class="comp-tasks-heading tasks-title">
+                <img src="./assets/icons/todo-completed.svg" alt="" /><span>Completed Tasks</span>
+              </div>
+          </div>
         </div>
       </div>
       <!-- Dialog Box to add new task -->
@@ -93,6 +107,38 @@
             <label>
               Low
               <input type="radio" id="low" name="priority" value="Low" />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Status: Not Started
+              <input
+                type="radio"
+                id="not-started"
+                name="status"
+                value="Not Started"
+              />
+            </label>
+
+            <label>
+              In Progress
+              <input
+                type="radio"
+                id="in-progress"
+                name="status"
+                value="In Progress"
+              />
+            </label>
+
+            <label>
+              Completed
+              <input
+                type="radio"
+                id="completed"
+                name="status"
+                value="Completed"
+              />
             </label>
           </div>
 

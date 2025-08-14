@@ -179,7 +179,7 @@ nav {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 10000;
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -216,6 +216,7 @@ dialog {
 }
 .completed-tasks {
   grid-area: 2 / 2 / 4 / 3;
+  overflow-y: scroll;
 }
 .task,
 .task-details,
@@ -225,9 +226,9 @@ dialog {
 .task {
   border: 1px solid #dddada;
   border-radius: 7px;
-  padding: 10px 20px 20px 10px;
+  padding: 10px 20px 10px 10px;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   margin: 10px;
   position: relative;
 }
@@ -235,7 +236,6 @@ dialog {
   border: none;
   background: none;
   cursor: pointer;
-  padding: 10px;
 }
 #addTask span:last-child {
   color: #7e7a7a;
@@ -266,15 +266,15 @@ dialog {
 }
 .about-task {
   font-size: 0.8rem;
-  gap: 20px;
+  column-gap: 20px;
+  row-gap: 5px;
   flex-wrap: wrap;
 }
-
 .status {
   color: #0225ff;
 }
 .date {
-  color: #5a2892;
+  color: #008B8B;
 }
 
 .circle {
@@ -337,7 +337,40 @@ dialog {
   padding: 0;
   border: none;
 }
-
+.tasks-heading-right{
+  transform: translateY(-5px)
+}
+.tasks-heading, .tasks-heading-left, .tasks-title{
+  display: flex;
+}
+.tasks-heading{
+  justify-content: space-between;
+  align-items: center;
+}
+.tasks-title{
+  align-items: center;
+  padding: 10px;
+  color: #e64545;
+}
+.tasks-heading-left, .tasks-status-heading{
+  gap: 5px;
+}
+.tasks-heading-left span{
+  transform: translateY(-4px);
+}
+.tasks-heading-left img{
+  width: 25px;
+}
+.comp-tasks-heading img, .tasks-status-heading img {
+  width: 18px;
+}
+.comp-tasks-heading, .tasks-status-heading{
+  padding-bottom: 0;
+  font-size: 0.9rem;
+}
+.comp-tasks-heading{
+  gap: 10px;
+}
 /* .line {
   text-decoration: line-through;
   color: rgb(143, 140, 140);
