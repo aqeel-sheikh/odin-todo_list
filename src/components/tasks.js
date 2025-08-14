@@ -1,5 +1,5 @@
-import {format, compareAsc} from "date-fns"
-
+import { format, compareAsc } from "date-fns";
+import { deleteTask } from "./taskManager";
 import dotsImg from "../assets/icons/three-dots.svg";
 import redCircle from "../assets/icons/red-circle.svg";
 import greenCircle from "../assets/icons/green-circle.svg";
@@ -23,7 +23,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-const tasksList = JSON.parse(localStorage.getItem("myData")) || [];
+export const tasksList = JSON.parse(localStorage.getItem("myData")) || [];
 
 export function addTask() {
   document.querySelector("#done").addEventListener("click", () => {
@@ -90,8 +90,11 @@ export function showTask(t) {
 
   const editBtn = document.createElement("a");
   editBtn.textContent = "Edit";
+  editBtn.classList.add("edit-btn");
   const dltBtn = document.createElement("a");
+  dltBtn.addEventListener("click", ()=> deleteTask(task, t))
   dltBtn.textContent = "Delete";
+  dltBtn.classList.add("dlt-btn");
 
   menu.append(editBtn, dltBtn);
   menuContainer.append(dotsBtn, menu);
@@ -181,7 +184,10 @@ export function showCompletedTask(t) {
 
   const editBtn = document.createElement("a");
   editBtn.textContent = "Edit";
+  editBtn.classList.add("edit-btn");
   const dltBtn = document.createElement("a");
+  dltBtn.classList.add("dlt-btn");
+  dltBtn.addEventListener("click", ()=> deleteTask(task, t))
   dltBtn.textContent = "Delete";
 
   menu.append(editBtn, dltBtn);
@@ -207,7 +213,7 @@ export function showCompletedTask(t) {
   sSpan.textContent = t.status;
   taskStatus.textContent = "Status: ";
   taskStatus.appendChild(sSpan);
-  
+
   priorityImg.src = greenCircle;
   sSpan.style.color = "#00b900ff";
 
@@ -216,16 +222,16 @@ export function showCompletedTask(t) {
 
   task.append(menuContainer, taskDetails, aboutTask);
 
-  if (t.status === "Completed"){
+  if (t.status === "Completed") {
     document.querySelector(".completed-tasks").appendChild(task);
   }
   dotsBtn.addEventListener("click", () => handleDotsBtnClick(menu, dotsBtn));
 }
-function handleDotsBtnClick (Menu, Btn) {
+function handleDotsBtnClick(Menu, Btn) {
   Menu.classList.toggle("hide");
-    if (!Btn.style.position) {
-      Btn.style.position = "absolute";
-    } else {
-      Btn.style.position = "";
-    }
+  if (!Btn.style.position) {
+    Btn.style.position = "absolute";
+  } else {
+    Btn.style.position = "";
   }
+}
