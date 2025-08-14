@@ -50,7 +50,7 @@ export function addTask() {
     const t = new task(title, date, priority, status, description);
     showTask(t);
     tasksList.push(t);
-    showCompletedTasks(tasksList);
+    showCompletedTask(t);
     localStorage.setItem("myData", JSON.stringify(tasksList));
 
     myDialog.close();
@@ -170,29 +170,69 @@ export function showTask(t) {
 
   document.querySelector(".tasks").appendChild(task);
 
-  dotsBtn.addEventListener("click", () => {
-    menu.classList.toggle("hide");
-    if (!dotsBtn.style.position) {
-      dotsBtn.style.position = "absolute";
-    } else {
-      dotsBtn.style.position = "";
-    }
-  });
-  return task;
+  dotsBtn.addEventListener("click", () => handleDotsBtnClick(menu, dotsBtn));
 }
+export function showCompletedTask(t) {
+  const task = document.createElement("div");
+  task.classList.add("task");
 
-export function showCompletedTasks(arr) {
-  const completedTasksContainer = document.querySelector(".completed-tasks");
-  for (let compTask of arr) {
-    if (compTask.status === "Completed") {
-      const existingTaskEl = document.querySelector(
-        `[data-id="${compTask.id}"]`
-      );
-      if (!existingTaskEl) {
-        const taskEl = showTask(compTask);
-        taskEl.dataset.id = compTask.id;
-        completedTasksContainer.appendChild(taskEl);
-      }
+  const menuContainer = document.createElement("div");
+  menuContainer.classList.add("menu-container");
+
+  const dotsBtn = document.createElement("img");
+  dotsBtn.src = dotsImg;
+  dotsBtn.classList.add("dots");
+
+  const menu = document.createElement("div");
+  menu.classList.add("menu", "hide");
+
+  const editBtn = document.createElement("a");
+  editBtn.textContent = "Edit";
+  const dltBtn = document.createElement("a");
+  dltBtn.textContent = "Delete";
+
+  menu.append(editBtn, dltBtn);
+  menuContainer.append(dotsBtn, menu);
+
+  const taskDetails = document.createElement("div");
+  taskDetails.classList.add("task-details");
+  const priorityImg = document.createElement("img");
+  priorityImg.classList.add("circle");
+
+  const taskTitle = document.createElement("h4");
+  taskTitle.textContent = t.title;
+
+  const taskDescription = document.createElement("p");
+  taskDescription.textContent = t.description;
+
+  const aboutTask = document.createElement("div");
+  aboutTask.classList.add("about-task");
+
+  const taskStatus = document.createElement("p");
+  const sSpan = document.createElement("span");
+  sSpan.classList.add("status");
+  sSpan.textContent = t.status;
+  taskStatus.textContent = "Status: ";
+  taskStatus.appendChild(sSpan);
+  
+  priorityImg.src = greenCircle;
+  sSpan.style.color = "#00b900ff";
+
+  taskDetails.append(priorityImg, taskTitle, taskDescription);
+  aboutTask.append(taskStatus);
+
+  task.append(menuContainer, taskDetails, aboutTask);
+
+  if (t.status === "Completed"){
+    document.querySelector(".completed-tasks").appendChild(task);
+  }
+  dotsBtn.addEventListener("click", () => handleDotsBtnClick(menu, dotsBtn));
+}
+function handleDotsBtnClick (Menu, Btn) {
+  Menu.classList.toggle("hide");
+    if (!Btn.style.position) {
+      Btn.style.position = "absolute";
+    } else {
+      Btn.style.position = "";
     }
   }
-}
