@@ -90,7 +90,7 @@ export function showTask(t) {
   dotsBtn.classList.add("dots");
 
   const menu = document.createElement("div");
-  menu.classList.add("menu", "hide");
+  menu.classList.add("menu");
 
   const editBtn = document.createElement("a");
   editBtn.textContent = "Edit";
@@ -176,13 +176,5 @@ export function showTask(t) {
     task.append(menuContainer, taskDetails, aboutTask);
     document.querySelector(".tasks").appendChild(task);
   }
-  dotsBtn.addEventListener("click", () => handleDotsBtnClick(menu, dotsBtn));
 }
-function handleDotsBtnClick(Menu, Btn) {
-  Menu.classList.toggle("hide");
-  if (!Btn.style.position) {
-    Btn.style.position = "absolute";
-  } else {
-    Btn.style.position = "";
-  }
-}
+

@@ -20,10 +20,13 @@ export function hideSidebarOnSmallScreens() {
 export function handleNavEvents() {
   function openNav() {
     document.querySelector(".sideNav").style.width = "250px";
+    document.querySelector(".sideNav").style.transform = "translateX(0px)";
     document.querySelector(".navCloseBtn").style.display = "block";
+    
   }
   function closeNav() {
     document.querySelector(".sideNav").style.width = "";
+    document.querySelector(".sideNav").style.transform = "translateX(-100px)";
     document.querySelector(".navCloseBtn").style.display = "none";
   }
   return {

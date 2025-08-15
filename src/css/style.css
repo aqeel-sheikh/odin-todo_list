@@ -76,8 +76,8 @@ nav,
   display: grid;
   grid-template-columns: 20% 1fr;
   gap: 10px;
-  text-align: center;
 }
+/* Top Navigation bar */
 nav {
   grid-template-rows: 50px;
   background: #f8f8f8;
@@ -118,12 +118,63 @@ nav {
     drop-shadow(0 0 2px rgba(255, 255, 255, 0.5)); /* Highlight */
 }
 
+/* Sidebar */
 .sidebar {
   background-color: #ff6767;
   border-radius: 7px;
   margin-top: 50px;
 }
+/* Sidebar */
+.sidebar {
+  padding: 1rem;
+  color: #fff;
+}
 
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+#dashboard-icon {
+  width: 40px;
+}
+.icon {
+  width: 20px;
+}
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.7rem;
+  gap: 1.6rem;
+}
+.sidebar-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.sidebar-card:hover {
+  color: #e64545;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+.sidebar-card h3:nth-child(n):hover {
+  cursor: pointer;
+}
+.user-info {
+  transform: translateY(-35px);
+  text-align: center;
+  color: #f8f8f8;
+  font-size: 0.9rem;
+  font-family: sans-serif;
+  line-height: 1.1;
+}
+.username {
+  font-weight: 600;
+}
+.userMail {
+  font-size: 0.8rem;
+}
 .profile {
   height: 100px;
   display: flex;
@@ -186,6 +237,7 @@ nav {
   transition: 0.5s;
   padding-top: 60px;
   margin: 0;
+  transform: translateX(-100px);
 }
 
 dialog {
@@ -256,7 +308,7 @@ dialog {
 .about-task {
   margin-left: 25px;
 }
-.task-details h4{
+.task-details h4 {
   margin-right: 25px;
 }
 .task-details p {
@@ -274,7 +326,7 @@ dialog {
   color: #0225ff;
 }
 .date {
-  color: #008B8B;
+  color: #008b8b;
 }
 
 .circle {
@@ -284,91 +336,101 @@ dialog {
 }
 .dots {
   width: 20px;
-  right: 0;
   cursor: pointer;
-  z-index: 999;
   position: relative;
+  transition: transform 0.15s ease-in-out;
 }
+
 .dots:hover {
   transform: scale(1.1);
 }
+
 .dots:active {
   transform: scale(0.9);
 }
+
 .menu-container {
-  position: absolute;
-  right: 10px;
-  top: 5px;
+  position: absolute; 
+  display: inline-block;
+  right: 5px;
+  top: 2px;
 }
+
 .menu {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #fff ;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 7px;
-  padding: 10px;
-  position: relative;
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 999;
+  border-radius: 6px;
+  overflow: hidden;
 }
-.menu a{
-  text-decoration: none;
+
+.menu a {
+  display: block;
+  padding: 10px 14px;
   color: #000;
+  text-decoration: none;
   font-size: 0.9rem;
   cursor: pointer;
 }
-.menu a:hover{
-  text-decoration: underline;
-}
-.menu a:active{
-  transform: scale(0.9);
-}
-.menu a:last-child{
-  color: #e64545;
+
+.menu a:hover {
+  background-color: #f1f1f1;
 }
 
-.hide {
+.menu a:active {
+  transform: scale(0.95);
+}
+
+.menu a:last-child {
+  color: #e64545; /* delete button red */
+}
+
+/* Show menu on hover */
+.menu-container:hover .menu {
   display: block;
-  width: 0;
-  overflow-x: hidden;
-  padding: 0;
-  border: none;
 }
-.tasks-heading-right{
-  transform: translateY(-5px)
+
+.tasks-heading-right {
+  transform: translateY(-5px);
 }
-.tasks-heading, .tasks-heading-left, .tasks-title{
+.tasks-heading,
+.tasks-heading-left,
+.tasks-title {
   display: flex;
 }
-.tasks-heading{
+.tasks-heading {
   justify-content: space-between;
   align-items: center;
 }
-.tasks-title{
+.tasks-title {
   align-items: center;
   padding: 10px;
   color: #e64545;
 }
-.tasks-heading-left, .tasks-status-heading{
+.tasks-heading-left,
+.tasks-status-heading {
   gap: 5px;
 }
-.tasks-heading-left span{
+.tasks-heading-left span {
   transform: translateY(-4px);
 }
-.tasks-heading-left img{
+.tasks-heading-left img {
   width: 25px;
 }
-.comp-tasks-heading img, .tasks-status-heading img {
+.comp-tasks-heading img,
+.tasks-status-heading img {
   width: 18px;
 }
-.comp-tasks-heading, .tasks-status-heading{
+.comp-tasks-heading,
+.tasks-status-heading {
   padding-bottom: 0;
   font-size: 0.9rem;
 }
-.comp-tasks-heading{
+.comp-tasks-heading {
   gap: 10px;
 }
 /* .line {
