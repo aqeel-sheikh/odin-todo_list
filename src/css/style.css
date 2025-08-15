@@ -123,24 +123,12 @@ nav {
   background-color: #ff6767;
   border-radius: 7px;
   margin-top: 50px;
-}
-/* Sidebar */
-.sidebar {
   padding: 1rem;
   color: #fff;
+  height: 100vh;
 }
 
-.sidebar-heading {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-#dashboard-icon {
-  width: 40px;
-}
-.icon {
-  width: 20px;
-}
+
 .sidebar-options {
   display: flex;
   flex-direction: column;
@@ -154,11 +142,51 @@ nav {
   padding: 0.5rem;
 }
 .sidebar-card:hover {
-  color: #e64545;
   background-color: #f8f8f8;
   border-radius: 10px;
+  transform: scale(1.01);
 }
-.sidebar-card h3:nth-child(n):hover {
+.sidebar-card:hover svg path {
+  fill: #ff6767;
+}
+
+.sidebar-card a {
+  text-decoration: none;
+  color: #f1f1f1;
+}
+.sidebar-card:hover > a{
+  color: #e64545;
+}
+.categories {
+  position: relative;
+  width: 100%;
+}
+.categories-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ff6666; /* matches sidebar theme */
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+.categories-content a {
+  display: block;
+  padding: 8px 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.categories-content a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.categories:hover .categories-content {
+  display: block;
+}
+.categories-btn{
   cursor: pointer;
 }
 .user-info {
@@ -257,6 +285,8 @@ dialog {
   grid-template-columns: 1fr 0.5fr;
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
+    height: 100%;
+
 }
 .content-box {
   border-radius: 7px;
@@ -350,7 +380,7 @@ dialog {
 }
 
 .menu-container {
-  position: absolute; 
+  position: absolute;
   display: inline-block;
   right: 5px;
   top: 2px;

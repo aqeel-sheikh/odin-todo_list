@@ -8,26 +8,38 @@
   }
   #content {
     grid-area: 1 / 1 / -1 / -1;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  .tasks{
+    grid-area: 1fr;
+  }
+  .tasks-status{
+    display: none;
+  }
+  .completed-tasks{
+    display: none
   }
   #search {
     width: 200px;
   }
-  .about-task, .task-details p{
+  .about-task,
+  .task-details p {
     margin: 0;
     gap: 5px;
   }
-  .task{
+  .task {
     padding: 10px;
   }
-  .task-details h4{
+  .task-details h4 {
     position: relative;
     top: -5px;
   }
 }
-@media (min-width: 768px){
-    .navCloseBtn{
-        display: none;
-    }
+@media (min-width: 768px) {
+  .navCloseBtn {
+    display: none;
+  }
 }
 @media screen and (max-height: 450px) {
   .sideNav {

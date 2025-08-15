@@ -5,7 +5,6 @@ import {
   showAddTaskForm,
   addTask,
   showTask,
-  showCompletedTask
 } from "./components/tasks.js";
 import {
   hideSidebarOnSmallScreens,
