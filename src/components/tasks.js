@@ -1,4 +1,4 @@
-import { format, compareAsc } from "date-fns";
+import { format} from "date-fns";
 import { deleteTask, editTask } from "./taskManager";
 import dotsImg from "../assets/icons/three-dots.svg";
 import redCircle from "../assets/icons/red-circle.svg";
@@ -6,9 +6,10 @@ import greenCircle from "../assets/icons/green-circle.svg";
 import blueCircle from "../assets/icons/blue-circle.svg";
 
 export class task {
-  constructor(title, dueDate, priority, status, description) {
+  constructor(title, dueDate= new Date(), priority, status, description) {
+    const safeDueDate = dueDate ? new Date(dueDate) : new Date();
     (this.title = title),
-      (this.dueDate = format(new Date(dueDate), "EEE, MMM d, yyyy")),
+      (this.dueDate = format(safeDueDate, "EEE, MMM d, yyyy")),
       (this.priority = priority),
       (this.status = status),
       (this.description = description),
