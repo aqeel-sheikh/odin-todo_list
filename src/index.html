@@ -143,9 +143,9 @@
                 <a href="#" data-link class="add-category-btn"
                   >+ Add New Category</a
                 >
-                <a href="#" data-link>Work</a>
-                <a href="#" data-link>Personal</a>
-                <a href="#" data-link>Urgent</a>
+                <p>Work</p>
+                <p>Hii</p>
+                
               </div>
             </div>
           </div>
@@ -184,12 +184,12 @@
         <form action="" id="taskForm">
           <div>
             <label for="title">
-              Title: <input type="text" id="title" name="title" required />
+              Title: <input type="text" id="title" name="title" />
             </label>
           </div>
           <div>
             <label for="date">
-              Due Date: <input type="date" id="date" name="date" required />
+              Due Date: <input type="date" id="date" name="date" />
             </label>
           </div>
           <div>
@@ -259,9 +259,19 @@
 
           <button id="done">Done</button>
         </form>
-
+        
         <button id="closeDialog">Close</button>
       </dialog>
+      <!-- Dialog to Add New Task Category -->
+      <dialog class="new-category-dialog">
+        <form action="" id="category-form">
+          <label for="category-name">
+            New Category: <input type="text" id="category-name" name="category-name">
+          </label>
+          <button id="addNewCategory">Add Category</button>
+        </form>
+        <button id="closeCategoryDialog">x</button>
+       </dialog>
     </main>
     <script></script>
   </body>

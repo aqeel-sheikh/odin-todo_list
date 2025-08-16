@@ -1,20 +1,23 @@
 import "./css/style.css";
 import "./css/responsive.css";
 
-import {
-  showAddTaskForm,
-  addTask,
-  showTask,
-} from "./components/tasks.js";
+import { showAddTaskForm, addTask, showTask } from "./components/tasks.js";
 import {
   hideSidebarOnSmallScreens,
   handleNavEvents,
 } from "./components/responsive.js";
-
+import {
+  addNewCategory,
+  showAddCategoryForm,
+  showCategory,
+  showTasksInCategory,
+} from "./components/categories.js";
 
 showAddTaskForm();
 addTask();
 hideSidebarOnSmallScreens();
+showAddCategoryForm();
+addNewCategory();
 
 document
   .querySelector(".hamburger")
@@ -25,7 +28,12 @@ document
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedData = JSON.parse(localStorage.getItem("myData")) || [];
+  const savedData2 = JSON.parse(localStorage.getItem("myCategories")) || [];
   for (let task of savedData) {
     showTask(task);
   }
+  for (let category of savedData2) {
+    showCategory(category);
+  }
+  showTasksInCategory()
 });

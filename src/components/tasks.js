@@ -1,5 +1,6 @@
 import { format} from "date-fns";
 import { deleteTask, editTask } from "./taskManager";
+import { addTaskInCategory } from "./categories";
 import dotsImg from "../assets/icons/three-dots.svg";
 import redCircle from "../assets/icons/red-circle.svg";
 import greenCircle from "../assets/icons/green-circle.svg";
@@ -48,7 +49,7 @@ export function handleAddTask() {
   const t = new task(title, date, priority, status, description);
 
   showTask(t);
-
+  addTaskInCategory(t)
   tasksList.push(t);
   localStorage.setItem("myData", JSON.stringify(tasksList));
 
@@ -178,4 +179,5 @@ export function showTask(t) {
     document.querySelector(".tasks").appendChild(task);
   }
 }
+
 

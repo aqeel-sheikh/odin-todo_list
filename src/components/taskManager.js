@@ -1,8 +1,10 @@
-import { myDialog, tasksList, handleAddTask, task, showTask } from "./tasks";
+import { myDialog, tasksList, handleAddTask} from "./tasks";
+import { categoryList } from "./categories";
 
 export function deleteTask(div, task) {
   let tasks = JSON.parse(localStorage.getItem("myData")) || [];
-
+  let cTasks = JSON.parse(localStorage.getItem("myCategories"))
+  
   tasks = tasks.filter((t) => t.id !== task.id);
 
   localStorage.setItem("myData", JSON.stringify(tasks));
@@ -32,6 +34,7 @@ export function editTask(t) {
   document.querySelector("#description").value = t.description;
 
   let currentTask = tasksList.find((task) => task.id === t.id);
+  let currentCategoryTask = categoryList.find(task => task.id === t.id)
 
   doneBtn.addEventListener("click", () => {
     const titleELement = document.querySelector("#title");
@@ -52,6 +55,8 @@ export function editTask(t) {
     currentTask.priority = priority;
     currentTask.status = status;
     currentTask.description = description;
+    
+    
     
     localStorage.setItem("myData", JSON.stringify(tasksList));
     myDialog.close()
