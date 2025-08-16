@@ -12,7 +12,7 @@ import {
   showCategory,
   showTasksInCategory,
 } from "./components/categories.js";
-import { showAllTasks } from "./components/routes.js";
+import { showAllTasks, showCompletedTasks } from "./components/routes.js";
 
 showAddTaskForm();
 addTask();
@@ -20,6 +20,7 @@ hideSidebarOnSmallScreens();
 showAddCategoryForm();
 addNewCategory();
 showAllTasks()
+showCompletedTasks ()
 
 document
   .querySelector(".hamburger")
