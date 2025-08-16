@@ -1,13 +1,20 @@
-import { myDialog, tasksList, handleAddTask} from "./tasks";
-import { categoryList } from "./categories";
+import { myDialog, tasksList, handleAddTask } from "./tasks";
+import { rawCategories } from "./categories";
 
 export function deleteTask(div, task) {
   let tasks = JSON.parse(localStorage.getItem("myData")) || [];
-  let cTasks = JSON.parse(localStorage.getItem("myCategories"))
-  
+  let categories = JSON.parse(localStorage.getItem("myCategories"));
+
   tasks = tasks.filter((t) => t.id !== task.id);
+  categories = categories.map((cat) => {
+    return {
+      ...cat,
+      tasks: cat.tasks.filter((t) => t.id !== task.id),
+    };
+  });
 
   localStorage.setItem("myData", JSON.stringify(tasks));
+  localStorage.setItem("myCategories", JSON.stringify(categories));
 
   div.remove();
 }
@@ -34,7 +41,10 @@ export function editTask(t) {
   document.querySelector("#description").value = t.description;
 
   let currentTask = tasksList.find((task) => task.id === t.id);
-  let currentCategoryTask = categoryList.find(task => task.id === t.id)
+
+  let currentCatTask = rawCategories
+    .flatMap((c) => c.tasks)
+    .find((tsk) => tsk.id === t.id);
 
   doneBtn.addEventListener("click", () => {
     const titleELement = document.querySelector("#title");
@@ -55,10 +65,22 @@ export function editTask(t) {
     currentTask.priority = priority;
     currentTask.status = status;
     currentTask.description = description;
-    
-    
-    
+
+    if (currentCatTask) {
+      currentCatTask.title = title;
+      currentCatTask.dueDate = date;
+      currentCatTask.priority = priority;
+      currentCatTask.status = status;
+      currentCatTask.description = description;
+    }
+    // currentCatTask.title = title;
+    // currentCatTask.dueDate = date;
+    // currentCatTask.priority = priority;
+    // currentCatTask.status = status;
+    // currentCatTask.description = description;
+
     localStorage.setItem("myData", JSON.stringify(tasksList));
-    myDialog.close()
+    localStorage.setItem("myCategories", JSON.stringify(rawCategories));
+    myDialog.close();
   });
 }

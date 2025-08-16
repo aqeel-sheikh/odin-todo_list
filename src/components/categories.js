@@ -21,7 +21,7 @@ export function showAddCategoryForm() {
 }
 const form = document.querySelector("#category-form");
 
-const rawCategories = JSON.parse(localStorage.getItem("myCategories")) || [];
+export const rawCategories = JSON.parse(localStorage.getItem("myCategories")) || [];
 export const categoryList = rawCategories.map((c) => {
   const cat = new Category(c.categoryName);
   cat.id = c.id;
@@ -36,7 +36,6 @@ export function showTasksInCategory() {
     cat.addEventListener("click", (e) => {
       document.querySelectorAll(".task").forEach((e) => e.remove());
       currentCategoryID = cat.dataset.id;
-      console.log("clicked");
       for (let c of categoryList) {
         if (cat.dataset.id === c.id) {
           if (c.tasks.length !== 0) {
