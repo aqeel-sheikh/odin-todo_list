@@ -12,12 +12,14 @@ import {
   showCategory,
   showTasksInCategory,
 } from "./components/categories.js";
+import { showAllTasks } from "./components/routes.js";
 
 showAddTaskForm();
 addTask();
 hideSidebarOnSmallScreens();
 showAddCategoryForm();
 addNewCategory();
+showAllTasks()
 
 document
   .querySelector(".hamburger")

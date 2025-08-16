@@ -77,7 +77,7 @@
               </svg>
 
               <a
-                href="/"
+                
                 class="dashboard-btn"
                 data-link
                 style="padding-left: 5px"
@@ -103,7 +103,7 @@
                 />
               </svg>
 
-              <a href="/" class="dashboard-btn" data-link>Completed Tasks</a>
+              <a class="dashboard-btn" data-link>Completed Tasks</a>
             </div>
             <div class="status sidebar-card">
               <svg
@@ -123,7 +123,7 @@
                 />
               </svg>
 
-              <a href="/" class="dashboard-btn" data-link>Status</a>
+              <a class="dashboard-btn" data-link>Status</a>
             </div>
             <div class="categories sidebar-card">
               <svg
@@ -140,12 +140,9 @@
               </svg>
               <a class="categories-btn">Task Categories</a>
               <div class="categories-content">
-                <a href="#" data-link class="add-category-btn"
+                <a data-link class="add-category-btn"
                   >+ Add New Category</a
                 >
-                <p>Work</p>
-                <p>Hii</p>
-                
               </div>
             </div>
           </div>
@@ -259,19 +256,20 @@
 
           <button id="done">Done</button>
         </form>
-        
+
         <button id="closeDialog">Close</button>
       </dialog>
       <!-- Dialog to Add New Task Category -->
       <dialog class="new-category-dialog">
         <form action="" id="category-form">
           <label for="category-name">
-            New Category: <input type="text" id="category-name" name="category-name">
+            New Category:
+            <input type="text" id="category-name" name="category-name" />
           </label>
           <button id="addNewCategory">Add Category</button>
         </form>
         <button id="closeCategoryDialog">x</button>
-       </dialog>
+      </dialog>
     </main>
     <script></script>
   </body>

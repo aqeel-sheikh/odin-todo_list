@@ -142,6 +142,7 @@ nav {
   align-items: center;
   gap: 1rem;
   padding: 0.5rem;
+  cursor: pointer;
 }
 .sidebar-card:hover {
   background-color: #f8f8f8;
@@ -284,7 +285,7 @@ dialog {
   padding: 1rem;
 }
 /* Content */
-#content {
+#content, .myTasksPage {
   margin: 50px 30px 30px 30px;
   border: 1px solid #dddada;
   display: grid;
@@ -294,6 +295,12 @@ dialog {
   gap: 10px;
   height: 100%;
 }
+.myTasksPage{
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: none;
+}
+
 .content-box {
   border-radius: 7px;
 }
@@ -305,6 +312,11 @@ dialog {
 .tasks {
   grid-area: 1 / 1 / 4 / 2;
   text-align: right;
+}
+#myTasksPageTasks{
+  grid-area: 1 / 1 / -1 / -1;
+  box-shadow: none;
+  
 }
 .completed-tasks {
   grid-area: 2 / 2 / 4 / 3;

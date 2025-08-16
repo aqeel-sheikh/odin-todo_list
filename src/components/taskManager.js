@@ -73,11 +73,6 @@ export function editTask(t) {
       currentCatTask.status = status;
       currentCatTask.description = description;
     }
-    // currentCatTask.title = title;
-    // currentCatTask.dueDate = date;
-    // currentCatTask.priority = priority;
-    // currentCatTask.status = status;
-    // currentCatTask.description = description;
 
     localStorage.setItem("myData", JSON.stringify(tasksList));
     localStorage.setItem("myCategories", JSON.stringify(rawCategories));
