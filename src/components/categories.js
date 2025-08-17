@@ -93,7 +93,7 @@ export function showCategory(c) {
 }
 
 function deleteCategory(cat) {
-  let categories = JSON.parse(localStorage.getItem("myCategories"));
+  let categories = JSON.parse(localStorage.getItem("myCategories")) || [];
   let allTasks = JSON.parse(localStorage.getItem("myData")) || [];
 
   const category = categories.find((c) => c.id === cat.dataset.id);

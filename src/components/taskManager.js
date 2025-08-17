@@ -3,7 +3,7 @@ import { rawCategories } from "./categories";
 
 export function deleteTask(div, task) {
   let tasks = JSON.parse(localStorage.getItem("myData")) || [];
-  let categories = JSON.parse(localStorage.getItem("myCategories"));
+  let categories = JSON.parse(localStorage.getItem("myCategories")) || [];
 
   tasks = tasks.filter((t) => t.id !== task.id);
   categories = categories.map((cat) => {
