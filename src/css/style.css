@@ -201,10 +201,10 @@ nav {
 .category img {
   width: 18px;
 }
-.category img:hover{
+.category img:hover {
   transform: scale(1.1);
 }
-.category img:active{
+.category img:active {
   transform: scale(0.9);
 }
 .user-info {
@@ -285,14 +285,6 @@ nav {
   transform: translateX(-100px);
 }
 
-dialog {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 400px;
-  padding: 1rem;
-}
 /* Content */
 #content,
 .myTasksPage {
@@ -361,10 +353,10 @@ dialog {
   color: #e64545;
   font-weight: 600;
 }
-#addTask:hover span:last-child{
+#addTask:hover span:last-child {
   color: #e64545;
 }
-#addTask:active{
+#addTask:active {
   scale: 0.9;
 }
 .task-details {
@@ -510,4 +502,77 @@ dialog {
   color: #c950508f;
   font-size: small;
   font-style: italic;
+}
+/* Dialogs */
+dialog {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50vw;
+  padding: 1.5rem;
+
+  border: none;
+  border-radius: 7px;
+}
+#taskForm {
+  padding: 1rem;
+  border: 1px solid #dddada;
+  font-size: small;
+}
+#taskForm div {
+  padding: 0.3rem;
+}
+.textInput {
+  width: 100%;
+  border: 1.5px solid #dddada;
+  border-radius: 3px;
+}
+.textInput:focus {
+  outline: 1.5px solid #e64545;
+}
+
+.selection label {
+  padding-right: 2rem;
+  color: #686464;
+}
+#taskForm textarea {
+  height: 8rem;
+}
+.btn {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.close-Btn {
+  padding: none;
+  border: none;
+  background: none;
+  text-decoration: underline;
+}
+.close-Btn:hover {
+  color: #e64545;
+}
+.dialog-heading {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+}
+.done-btn {
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background: #e64545;
+  color: #fff;
+  padding: 0.3rem 1rem;
+  font-weight: 600;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.btn:active {
+  transform: scale(0.9);
+}
+.radio-btn, .date-input {
+  cursor: pointer;
 }
