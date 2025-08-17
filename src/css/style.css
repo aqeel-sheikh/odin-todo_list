@@ -14,9 +14,9 @@
 * {
   margin: 0;
 }
-html{
+html {
   overflow-y: auto;
-  scrollbar-width: thin; 
+  scrollbar-width: thin;
   scrollbar-color: #eeeded transparent;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -100,7 +100,7 @@ nav {
 }
 #search {
   border-radius: 7px;
-  width: 300px;
+  width: 400px;
 }
 #search,
 .sidebar,
@@ -135,7 +135,7 @@ nav {
   display: flex;
   flex-direction: column;
   margin-left: 0.7rem;
-  gap: 1.6rem;
+  gap: 1rem;
 }
 .sidebar-card {
   display: flex;
@@ -176,11 +176,12 @@ nav {
   max-height: 120px;
 
   overflow-y: auto;
-  scrollbar-width: thin; 
+  scrollbar-width: thin;
   scrollbar-color: #c95050 transparent;
 }
 .categories-content p {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   padding: 8px 12px;
   color: white;
   font-size: 0.9rem;
@@ -196,6 +197,15 @@ nav {
 }
 .categories-btn {
   cursor: pointer;
+}
+.category img {
+  width: 18px;
+}
+.category img:hover{
+  transform: scale(1.1);
+}
+.category img:active{
+  transform: scale(0.9);
 }
 .user-info {
   transform: translateY(-35px);
@@ -224,10 +234,9 @@ nav {
 .hamburger {
   top: 15px;
   left: 15px;
-  font-size: 24px;
   color: white;
   background-color: #ff6767;
-  padding: 10px 14px;
+  padding: 7px 11px;
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -285,7 +294,8 @@ dialog {
   padding: 1rem;
 }
 /* Content */
-#content, .myTasksPage {
+#content,
+.myTasksPage {
   margin: 50px 30px 30px 30px;
   border: 1px solid #dddada;
   display: grid;
@@ -295,28 +305,29 @@ dialog {
   gap: 10px;
   height: 100%;
 }
-.myTasksPage{
+.myTasksPage {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  border: none;
+  border: 1px solid #dddada;
+  border-radius: 15px;
 }
 
 .content-box {
   border-radius: 7px;
 }
-.tasks, .completed-tasks{
+.tasks,
+.completed-tasks {
   overflow-y: auto;
-  scrollbar-width: thin; 
+  scrollbar-width: thin;
   scrollbar-color: #eeeded transparent;
 }
 .tasks {
   grid-area: 1 / 1 / 4 / 2;
   text-align: right;
 }
-#myTasksPageTasks{
+#myTasksPageTasks {
   grid-area: 1 / 1 / -1 / -1;
   box-shadow: none;
-  
 }
 .completed-tasks {
   grid-area: 2 / 2 / 4 / 3;
@@ -328,7 +339,7 @@ dialog {
 }
 .task {
   border: 1px solid #dddada;
-  border-radius: 7px;
+  border-radius: 18px;
   padding: 10px 20px 10px 10px;
   flex-direction: column;
   gap: 10px;
@@ -339,6 +350,7 @@ dialog {
   border: none;
   background: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 #addTask span:last-child {
   color: #7e7a7a;
@@ -348,6 +360,12 @@ dialog {
   font-size: 1rem;
   color: #e64545;
   font-weight: 600;
+}
+#addTask:hover span:last-child{
+  color: #e64545;
+}
+#addTask:active{
+  scale: 0.9;
 }
 .task-details {
   flex-direction: column;
@@ -484,25 +502,12 @@ dialog {
 .comp-tasks-heading {
   gap: 10px;
 }
-/* .line {
-  text-decoration: line-through;
-  color: rgb(143, 140, 140);
-}
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #6975b9;
-  border-radius: 4px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-input[type="checkbox"]:checked {
-  background-color: #4c53af;
-}
-
-input[type="checkbox"]:checked::after {
-  color: white;
-  display: block;
+.no-tasks {
   text-align: center;
-} */
+  color: #c95050;
+}
+.no-tasks span {
+  color: #c950508f;
+  font-size: small;
+  font-style: italic;
+}

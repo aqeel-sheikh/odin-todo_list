@@ -23,11 +23,11 @@ showAllTasks()
 showCompletedTasks ()
 
 document
-  .querySelector(".hamburger")
-  .addEventListener("click", handleNavEvents().openNav);
+.querySelector(".hamburger")
+.addEventListener("click", handleNavEvents().openNav);
 document
-  .querySelector(".navCloseBtn")
-  .addEventListener("click", handleNavEvents().closeNav);
+.querySelector(".navCloseBtn")
+.addEventListener("click", handleNavEvents().closeNav);
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedData = JSON.parse(localStorage.getItem("myData")) || [];
@@ -40,3 +40,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   showTasksInCategory()
 });
+

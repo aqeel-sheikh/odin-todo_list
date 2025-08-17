@@ -15,9 +15,10 @@ export function deleteTask(div, task) {
 
   localStorage.setItem("myData", JSON.stringify(tasks));
   localStorage.setItem("myCategories", JSON.stringify(categories));
-
+  
   div.remove();
 }
+
 export function editTask(t) {
   myDialog.showModal();
   const doneBtn = document.querySelector("#done");

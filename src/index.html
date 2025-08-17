@@ -21,7 +21,7 @@
             name="search"
             id="search"
             class="nav-item"
-            placeholder="Search your tasks here"
+            placeholder="Search bar vibes only 🫠 (functionality coming soon)"
           />
           <button class="search-button">
             <span
@@ -76,11 +76,7 @@
                 />
               </svg>
 
-              <a
-                
-                class="dashboard-btn"
-                data-link
-                style="padding-left: 5px"
+              <a class="dashboard-btn" data-link style="padding-left: 5px"
                 >My Tasks</a
               >
             </div>
@@ -140,9 +136,7 @@
               </svg>
               <a class="categories-btn">Task Categories</a>
               <div class="categories-content">
-                <a data-link class="add-category-btn"
-                  >+ Add New Category</a
-                >
+                <a data-link class="add-category-btn">+ Add New Category</a>
               </div>
             </div>
           </div>
@@ -153,12 +147,13 @@
             <div class="tasks-heading">
               <div class="tasks-heading-left tasks-title">
                 <img src="./assets/icons/todo-pending.svg" alt="" />
-                <span>To-Do</span>
+                <span class="todo-title">To-Do</span>
               </div>
               <button class="tasks-heading-right" id="addTask">
                 <span>+</span> <span> Add Task</span>
               </button>
             </div>
+            <p class="no-tasks"></p>
           </div>
           <div class="tasks-status content-box">
             <div class="tasks-status-heading tasks-title">
@@ -166,6 +161,12 @@
                 >Tasks Status</span
               >
             </div>
+            <p style="font-size: small; padding: 5px; color: #d87373">
+              Behold, the mighty Task Status section! A place where tasks should
+              proudly announce their progress… but instead they sit in silence
+              sipping coffee waiting for functionality that doesn’t exist yet
+              ☕ <span style="font-size: 0.8em;">(I got exausted tbh).</span>
+            </p>
           </div>
           <div class="completed-tasks content-box">
             <div class="comp-tasks-heading tasks-title">
@@ -238,7 +239,6 @@
                 value="In Progress"
               />
             </label>
-
             <label>
               Completed
               <input
