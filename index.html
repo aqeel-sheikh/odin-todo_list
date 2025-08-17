@@ -60,7 +60,9 @@
                   fill="#FFFFFF"
                 />
               </svg>
-              <a href="/" class="dashboard-btn" data-link>Dashboard</a>
+              <a href="#" class="dashboard-btn" onclick="location.reload()"
+                >Dashboard</a
+              >
             </div>
             <div class="myTasks sidebar-card">
               <svg
@@ -164,8 +166,8 @@
             <p style="font-size: small; padding: 5px; color: #d87373">
               Behold, the mighty Task Status section! A place where tasks should
               proudly announce their progress… but instead they sit in silence
-              sipping coffee waiting for functionality that doesn’t exist yet
-              ☕ <span style="font-size: 0.8em;">(I got exausted tbh).</span>
+              sipping coffee waiting for functionality that doesn’t exist yet ☕
+              <span style="font-size: 0.8em">(I got exausted tbh).</span>
             </p>
           </div>
           <div class="completed-tasks content-box">
@@ -179,96 +181,132 @@
       </div>
       <!-- Dialog Box to add new task -->
       <dialog id="myDialog">
+        <div class="dialog-heading">
+          <p>Add New Task</p>
+          <button id="closeDialog" class="btn close-Btn">Go Back</button>
+        </div>
         <form action="" id="taskForm">
           <div>
             <label for="title">
-              Title: <input type="text" id="title" name="title" />
+              Title<br />
+              <input type="text" id="title" name="title" class="textInput" />
             </label>
           </div>
           <div>
             <label for="date">
-              Due Date: <input type="date" id="date" name="date" />
+              Due Date<br /><input
+                type="date"
+                id="date"
+                name="date"
+                class="textInput date-input"
+              />
             </label>
           </div>
-          <div>
-            <label>
-              Priority: Extreme
+          <div class="selection">
+            Priority<br />
+            <label class="radio-btn">
+              Extreme
               <input
                 type="radio"
                 id="extreme"
                 name="priority"
                 value="Extreme"
+                class="radio-btn"
               />
             </label>
 
-            <label>
+            <label class="radio-btn">
               Moderate
               <input
                 type="radio"
                 id="moderate"
                 name="priority"
                 value="Moderate"
+                class="radio-btn"
                 checked
               />
             </label>
 
-            <label>
+            <label class="radio-btn">
               Low
-              <input type="radio" id="low" name="priority" value="Low" />
+              <input
+                type="radio"
+                id="low"
+                name="priority"
+                value="Low"
+                class="radio-btn"
+              />
             </label>
           </div>
 
-          <div>
-            <label>
-              Status: Not Started
+          <div class="selection">
+            Status<br />
+            <label class="radio-btn">
+              Not Started
               <input
                 type="radio"
                 id="not-started"
                 name="status"
                 value="Not Started"
+                class="radio-btn"
                 checked
               />
             </label>
 
-            <label
+            <label class="radio-btn"
               >In Progress
               <input
                 type="radio"
                 id="in-progress"
                 name="status"
                 value="In Progress"
+                class="radio-btn"
               />
             </label>
-            <label>
+            <label class="radio-btn">
               Completed
               <input
                 type="radio"
                 id="completed"
                 name="status"
                 value="Completed"
+                class="radio-btn"
               />
             </label>
           </div>
 
           <div>
-            <label> Description: <textarea id="description"> </textarea></label>
+            <label>
+              Task Description<br /><textarea
+                id="description"
+                class="textInput"
+              >
+              </textarea>
+            </label>
           </div>
-
-          <button id="done">Done</button>
         </form>
-
-        <button id="closeDialog">Close</button>
+        <button id="done" class="btn done-btn">Done</button>
       </dialog>
       <!-- Dialog to Add New Task Category -->
       <dialog class="new-category-dialog">
+        <div class="dialog-heading">
+          <p>Add New Category</p>
+          <button id="closeCategoryDialog" class="btn close-Btn">
+            Go Back
+          </button>
+        </div>
         <form action="" id="category-form">
           <label for="category-name">
-            New Category:
-            <input type="text" id="category-name" name="category-name" />
+            New Category<br />
+            <input
+              type="text"
+              id="category-name"
+              name="category-name"
+              class="textInput"
+            />
           </label>
-          <button id="addNewCategory">Add Category</button>
+          <button id="addNewCategory" class="btn done-btn">Add Category</button>
         </form>
-        <button id="closeCategoryDialog">x</button>
       </dialog>
     </main>
     <script></script>
